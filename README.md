@@ -1,92 +1,158 @@
-
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Энциклопедия RP терминов</title>
     <style>
+        :root {
+            --primary-color: #4caf50;
+            --secondary-color: #2e7d32;
+            --light-accent: #81c784;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --header-bg: #1a1a1a;
+            --text-color: #e0e0e0;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
         }
         
         header {
-            background-color: #1a1a1a;
-            padding: 20px;
+            background-color: var(--header-bg);
+            padding: 15px;
             text-align: center;
-            border-bottom: 3px solid #2e7d32;
+            border-bottom: 3px solid var(--secondary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         h1 {
-            color: #4caf50;
+            color: var(--primary-color);
             margin: 0;
-            font-size: 2.5em;
+            font-size: 1.8rem;
         }
         
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
+            width: 100%;
+            padding: 10px;
         }
         
         .term-card {
-            background-color: #1e1e1e;
-            border-left: 4px solid #2e7d32;
-            padding: 15px;
-            margin-bottom: 20px;
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--secondary-color);
+            padding: 12px;
+            margin-bottom: 15px;
             border-radius: 0 5px 5px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         
         .term-title {
-            color: #4caf50;
-            font-size: 1.5em;
+            color: var(--primary-color);
+            font-size: 1.3rem;
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            word-break: break-word;
         }
         
         .term-abbreviation {
-            color: #81c784;
+            color: var(--light-accent);
             font-weight: bold;
+            font-size: 0.95rem;
         }
         
         .term-description {
-            margin-top: 10px;
+            margin-top: 8px;
+            font-size: 0.95rem;
         }
         
         footer {
-            background-color: #1a1a1a;
-            padding: 15px;
+            background-color: var(--header-bg);
+            padding: 12px;
             text-align: center;
-            border-top: 3px solid #2e7d32;
-            margin-top: 30px;
+            border-top: 3px solid var(--secondary-color);
+            margin-top: 20px;
+            font-size: 0.9rem;
         }
         
         .search-box {
-            margin: 20px 0;
-            text-align: center;
+            margin: 15px 0;
+            padding: 0 5px;
         }
         
         #search {
             padding: 10px;
-            width: 300px;
+            width: 100%;
+            max-width: 400px;
             background-color: #2d2d2d;
-            border: 1px solid #2e7d32;
-            color: #e0e0e0;
+            border: 1px solid var(--secondary-color);
+            color: var(--text-color);
             border-radius: 4px;
+            font-size: 1rem;
+            margin: 0 auto;
+            display: block;
         }
         
         .category {
-            color: #81c784;
+            color: var(--light-accent);
             font-weight: bold;
-            margin-top: 30px;
-            border-bottom: 1px solid #2e7d32;
+            margin-top: 25px;
+            border-bottom: 1px solid var(--secondary-color);
             padding-bottom: 5px;
+            font-size: 1.2rem;
+            padding-left: 5px;
         }
+        
+        /* Улучшение для маленьких экранов */
+        @media (max-width: 480px) {
+            .term-card {
+                padding: 10px;
+            }
+            
+            .term-title {
+                font-size: 1.2rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Анимация для плавного появления карточек */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .term-card {
+            animation: fadeIn 0.3s ease-out forwards;
+            opacity: 0;
+        }
+        
+        /* Задержка для анимации */
+        .term-card:nth-child(1) { animation-delay: 0.1s; }
+        .term-card:nth-child(2) { animation-delay: 0.15s; }
+        .term-card:nth-child(3) { animation-delay: 0.2s; }
+        .term-card:nth-child(4) { animation-delay: 0.25s; }
+        .term-card:nth-child(5) { animation-delay: 0.3s; }
+        .term-card:nth-child(6) { animation-delay: 0.35s; }
+        .term-card:nth-child(7) { animation-delay: 0.4s; }
+        .term-card:nth-child(8) { animation-delay: 0.45s; }
+        .term-card:nth-child(9) { animation-delay: 0.5s; }
+        .term-card:nth-child(10) { animation-delay: 0.55s; }
+        /* и так далее... */
     </style>
 </head>
 <body>
@@ -96,7 +162,7 @@
     
     <div class="container">
         <div class="search-box">
-            <input type="text" id="search" placeholder="Поиск терминов...">
+            <input type="text" id="search" placeholder="Поиск терминов..." autocapitalize="off" autocomplete="off">
         </div>
         
         <div class="term-card">
@@ -269,18 +335,30 @@
     </footer>
     
     <script>
-        // Простой поиск по терминам
+        // Улучшенный поиск по терминам с задержкой
+        let searchTimeout;
         document.getElementById('search').addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const termCards = document.querySelectorAll('.term-card');
-            
-            termCards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const searchTerm = this.value.trim().toLowerCase();
+                const termCards = document.querySelectorAll('.term-card');
+                
+                termCards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    if (searchTerm === '' || text.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }, 200);
+        });
+        
+        // Плавное отображение карточек при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.term-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${0.1 + index * 0.05}s`;
             });
         });
     </script>
